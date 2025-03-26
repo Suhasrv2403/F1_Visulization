@@ -1,0 +1,32 @@
+f1-telemetry-analysis/
+│
+├── data/
+│   ├── raw/                  # Raw data fetched from OpenF1 API
+│   ├── cleaned/              # Cleaned and preprocessed telemetry data
+│   ├── processed/            # Processed telemetry data (aggregated)
+│
+├── notebooks/                # Jupyter Notebooks for data analysis
+│   ├── data_collection.ipynb # API data collection and processing
+│   ├── data_cleaning.ipynb   # Data cleaning and transformation
+│   └── exploratory_analysis.ipynb # Visual analysis
+│
+├── scripts/                  # Python scripts for the pipeline
+│   ├── collect_data.py       # Script to fetch telemetry data from OpenF1 API
+│   ├── process_data.py       # Data transformation and streaming with Spark
+│   ├── store_data.py         # Store data in InfluxDB
+│   └── setup_influxdb.py     # InfluxDB setup and schema creation
+│
+├── config/                   # Configuration files
+│   ├── api_config.yaml       # OpenF1 API configuration
+│   ├── spark_config.yaml     # Apache Spark configuration
+│   └── influxdb_config.yaml  # InfluxDB connection settings
+│
+├── dashboards/               # Grafana dashboard configuration (JSON export)
+│   ├── speed_lap_times.json  # Speed vs Lap time dashboard
+│   ├── throttle_brake.json   # Throttle and brake usage chart
+│   ├── fuel_consumption.json # Fuel consumption dashboard
+│   └── sector_times.json     # Sector times breakdown
+│
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project documentation
+└── .gitignore

@@ -30,7 +30,10 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from pymongo import MongoClient
 
+client = MongoClient("mongodb://admin:adminpassword@localhost:27017/")
+db = client["F1_raw"]
 # OpenF1 API Configuration
 BASE_URL = "https://api.openf1.org/v1/laps?"
 SESSION_KEY = "9689"  # Replace with actual session key
@@ -58,7 +61,8 @@ def fetch_location_url2(driver_number,session_key,start_timestamp):
 
 
 # Retrieve data
-data = fetch_lap_data(SESSION_KEY)
+#data = fetch_lap_data(SESSION_KEY)
+data = list(db['laps'].find({"session_key":int(SESSION_KEY)}))
 
 if not data:
     print("No data retrieved. Check session key.")

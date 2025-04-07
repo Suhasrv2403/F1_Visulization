@@ -49,7 +49,7 @@ Metrics: Sector 1, 2, and 3 times
 
 Insights: Find strengths & weaknesses in different parts of the track
 
-8. Overtake & Position Changes
+8. Overtake &   Position Changes
 Visualization Type: Step chart
 
 Metrics: Position change over laps

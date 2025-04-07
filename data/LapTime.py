@@ -67,7 +67,7 @@ if not data:
     exit()
 
 # Convert to DataFrame
-df = pd.DataFrame(data)
+df = pd.DataFrame()
 drivers = df["driver_number"].unique().tolist()
 for driver in drivers:
     dn = requests.get(f'https://api.openf1.org/v1/drivers?driver_number={driver}&session_key={SESSION_KEY}')

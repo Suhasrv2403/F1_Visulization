@@ -72,3 +72,68 @@ for lap in last_session:
 
 
 
+
+
+"""
+
+1) See if session data injested if so get all sessions from that date and then
+2) Mark session false for the following -> Drivers
+3) For every session -> Need Driver,laps,car and car data
+
+Lets map flow to see how we can improve this ?
+
+Benchmark this as V1,V2,V3
+
+V1 -  Api calls and directly send graphs
+V2 -  Store data locally(async) and then compute and send graphs
+V3 - Send data in api response for consumption.
+
+
+LapTime -> Get lap data -> For every driver sort by lap number plot as a bar of s1+s2+s3 -> How to store -> Get lap data each session group by each driver and order by lap number
+SpeedVsTime -> Speed at each trap per lap, see fluctuations -> Get lap data sort by lap and store speed at check points
+Throttle_Brake -> Get all laps in session sort by driver , lap number, get timestamp of each stamp lap_x = start , end = start of next lap, get car data for that and store it
+
+
+
+So the flow
+
+For every session get lap data group by driver (change number to name) sort by lap number and store
+Car data -> per session for every driver and every lap get car data and store
+
+
+
+
+"""
+
+
+
+BASE_LAP_URL = "https://api.openf1.org/v1/laps?"
+SESSION_KEY = "9689"  # Replace with actual session key
+
+# Fetch lap data for all drivers
+def fetch_lap_data(session_key):
+    url = f"{BASE_LAP_URL}session_key={session_key}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print("No data retrieved. Check session key.")
+        exit()
+
+# Retrieve data
+
+
+
+def raw_storage(SESSSION_KEY):
+
+    session_data = fetch_lap_data(SESSION_KEY)
+    collection = db['sessions']
+    collection.insert_many(session_data)
+    
+
+
+
+
+
+
+
